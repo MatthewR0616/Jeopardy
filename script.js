@@ -7,7 +7,7 @@ let categories = [];
  * Returns array of category ids
  */
 async function getCategoryIds() {
-    let response = await axios.get('https://jservice.io/api/categories?count=100');
+    let response = await axios.get('https://rithm-jeopardy.herokuapp.com/api/categories?count=100');
     let catIds = response.data.map(c => c.id);
     return _.sampleSize(catIds, NUM_CATEGORIES);
 }
@@ -24,7 +24,7 @@ async function getCategoryIds() {
  *   ]
  */
 async function getCategory(catId) {
-    let response = await axios.get(`https://jservice.io/api/category?id=${catId}`);
+    let response = await axios.get(`https://rithm-jeopardy.herokuapp.com/api/category?id=${catId}`);
     let catData = response.data;
     let clues = catData.clues.slice(0, NUM_QUESTIONS_PER_CAT).map(c => ({
         question: c.question,
